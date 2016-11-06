@@ -1,6 +1,7 @@
 package HomeWork3;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 import static util.ConsoleUtils.*;
 import static util.ConsoleUtils.Color.*;
@@ -13,14 +14,16 @@ public class App {
 
     public static void main(String[] args) {
         inventorization = new Inventorization();
-        Category defaultCategory = new Category("Tools");
-        inventorization.addCategory(defaultCategory);
-
-        inventorization.addProduct(new Product("Spoon", defaultCategory, new BigDecimal(5), 10));
-        inventorization.addProduct(new Product("Shovel", defaultCategory, new BigDecimal(50), 30));
-        inventorization.addProduct(new Product("Fork", defaultCategory, new BigDecimal(6), 40));
-
         showMainMenu();
+    }
+
+    private static void initializeDemoData() {
+        Category demoCategory = new Category("Tools");
+        inventorization.addCategory(demoCategory);
+
+        inventorization.addProduct(new Product("Spoon", demoCategory, new BigDecimal(5), 10));
+        inventorization.addProduct(new Product("Shovel", demoCategory, new BigDecimal(50), 30));
+        inventorization.addProduct(new Product("Fork", demoCategory, new BigDecimal(6), 40));
     }
 
     private static void showMainMenu() {
@@ -29,12 +32,16 @@ public class App {
             System.out.println("Main menu: ");
             System.out.println("1: Categories");
             System.out.println("2: Products");
-            switch (getIntFromUser(1, 2)) {
+            System.out.println("3: Initialize demo data");
+            switch (getIntFromUser(1, 3)) {
                 case 1:
                     showCategoriesMenu();
                     break;
                 case 2:
                     showProductsMenu();
+                    break;
+                case 3:
+                    initializeDemoData();
                     break;
             }
         }
