@@ -3,8 +3,7 @@ package HomeWork2;
 import HomeWork2.core.*;
 
 
-import static HomeWork2.ConcoleInputUtils.getDoubleFromUser;
-import static HomeWork2.ConcoleInputUtils.getIntFromUser;
+import static util.ConsoleUtils.*;
 
 /**
  * Created by aelmod-notebook on 30.10.2016.
