@@ -1,5 +1,6 @@
 package util;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
@@ -96,6 +97,14 @@ public class ConsoleUtils {
             System.err.print("Wrong input, please try again: ");
         }
         return scanner.nextDouble();
+    }
+
+    public static BigDecimal getBigDecimalFromUser(){
+        while (!scanner.hasNextBigDecimal()){
+            scanner.next();
+            System.err.print("Wrong input, please try again: ");
+        }
+        return scanner.nextBigDecimal();
     }
 
 

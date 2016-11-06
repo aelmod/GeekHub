@@ -118,7 +118,7 @@ public class App {
         Category category = allCategories[getIntFromUser(0, allCategories.length)];
 
         System.out.print("Enter product price: ");
-        BigDecimal price = new BigDecimal(getIntFromUser());
+        BigDecimal price = getBigDecimalFromUser();
         System.out.print("Enter product current count: ");
         int currentCount = getIntFromUser();
 
