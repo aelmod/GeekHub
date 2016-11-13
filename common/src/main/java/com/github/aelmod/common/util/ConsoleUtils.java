@@ -86,6 +86,14 @@ public class ConsoleUtils {
         return res;
     }
 
+    public static String getWordFromUser() {
+        String res;
+
+        while ((res = scanner.next()).isEmpty());
+
+        return res;
+    }
+
     /**
      *
      * @param min Min acceptable value
