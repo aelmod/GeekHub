@@ -12,6 +12,8 @@ import java.util.Set;
 
 public interface TaskManager {
 
+    void addCategory(String name);
+
     void add(LocalDateTime date, Task task);
 
     void remove(LocalDateTime date);

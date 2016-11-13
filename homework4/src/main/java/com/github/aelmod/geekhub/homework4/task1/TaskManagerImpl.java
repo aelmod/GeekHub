@@ -15,9 +15,16 @@ public class TaskManagerImpl implements TaskManager {
 
 
     @Override
+    public void addCategory(String name) {
+        categoriesList.add(name);
+    }
+
+    @Override
     public void add(LocalDateTime date, Task task) {
         tasksList.put(date, task);
     }
+
+
 
     @Override
     public void remove(LocalDateTime date) {
