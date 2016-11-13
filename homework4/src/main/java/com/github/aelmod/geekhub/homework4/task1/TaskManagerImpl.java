@@ -21,6 +21,9 @@ public class TaskManagerImpl implements TaskManager {
 
     @Override
     public void remove(LocalDateTime date) {
+        if (!tasksList.containsKey(date)){
+            throw new NoSuchElementException();
+        }
         tasksList.remove(date);
     }
 
