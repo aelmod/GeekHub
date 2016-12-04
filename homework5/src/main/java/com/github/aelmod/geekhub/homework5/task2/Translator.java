@@ -13,13 +13,13 @@ import java.net.URL;
 public class Translator {
     final static String YT_API_KEY = "trnsl.1.1.20161121T181914Z.d351ea37544769c1.dae9472f644e06b7b062ddb52113c29be0193179";
 
-    public void translate(String text) throws Exception {
+    public String translate(String text) throws Exception {
         URL url = new URL("https://translate.yandex.net/api/v1.5/tr/translate?");
         HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
         httpsURLConnection.setRequestMethod("POST");
         httpsURLConnection.setRequestProperty("Content-Type", " application/x-www-form-urlencoded");
 
-        String urlParameters = "key=" + YT_API_KEY + "&text=" + text + "&lang=en-ru";
+        String urlParameters = String.format("key=%s&text=%s&lang=en-ru", YT_API_KEY, text);
 
         httpsURLConnection.setDoOutput(true);
         DataOutputStream dataOutputStream = new DataOutputStream(httpsURLConnection.getOutputStream());
@@ -31,18 +31,17 @@ public class Translator {
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(httpsURLConnection.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
 
+        String response = "";
+        String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            response += inputLine;
         }
         in.close();
 
         if (responseCode != 200) {
             throw new Exception("Error from Yandex: " + response);
         }
-        System.out.println("Original text: " + text);
-        XMLParser.parse(response.toString());
+        return XMLParser.parse(response);
     }
 }

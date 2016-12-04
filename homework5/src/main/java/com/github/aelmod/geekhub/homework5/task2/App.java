@@ -5,8 +5,9 @@ package com.github.aelmod.geekhub.homework5.task2;
  */
 public class App {
     public static void main(String[] args) throws Exception {
+        System.out.println("Original text: " + GetTextFromExample.getText());
         Translator translator = new Translator();
-        translator.translate(GetTextFromExample.getText());
+        System.out.println(translator.translate(GetTextFromExample.getText()));
     }
 }
 
